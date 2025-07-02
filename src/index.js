@@ -20,7 +20,7 @@ const blockedUsers = [
 client.on('voiceStateUpdate', (oldState, newState) => {
     try {
         // Riat Discord ID
-        const monitoredUserId = "706147626118021220";
+        const monitoredUserId = "1251534422885404718";
 
         // Prüft, ob es um Riat geht
         if (newState.member.id === monitoredUserId) {
