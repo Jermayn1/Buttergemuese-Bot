@@ -50,7 +50,10 @@ module.exports = {
 
         // Gibt die Nachricht aus
         interaction.reply({
-            content: "",
+            content: "Message send!",
+        });
+
+        interaction.channel.send({
             embeds: [Embed],
             components: [row1]
         });
