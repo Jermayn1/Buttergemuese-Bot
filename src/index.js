@@ -11,6 +11,9 @@ const client = new Client({
     partials: [ User, Message, GuildMember, ThreadMember ]
 });
 
+// Fügt die Config zum client hinzu
+client.config = require("./config.json");
+
 // Collections für Events, Commands, etc.
 client.events = new Collection();
 client.commands = new Collection();

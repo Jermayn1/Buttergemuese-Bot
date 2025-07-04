@@ -1,0 +1,12 @@
+{
+    "developer": ["380066508425920522"],
+    "color": {
+        "normal": "#4467C4",
+        "valorant": "#ff4654",
+        "error": "#ff5353"
+    },
+
+    "valorant_assets": {
+        "pick_your_playstyle": "https://github.com/Jermayn1/Buttergemuese-Bot-Assets/blob/main/gif/pick_your_playstyle.gif?raw=true"
+    }
+}
