@@ -51,7 +51,6 @@ module.exports = {
         // Gibt die Nachricht aus
         interaction.reply({
             content: "",
-            ephemeral: true,
             embeds: [Embed],
             components: [row1]
         });
