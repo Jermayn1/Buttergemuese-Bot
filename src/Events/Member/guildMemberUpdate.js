@@ -13,6 +13,9 @@ module.exports = {
             // Riat Role Feature
             const { giveRiatRole } = require("../../Structures/Functions/riatFeature");
             giveRiatRole(client);
+            // Riat Name Feature
+            const { giveRiatName } = require("../../Structures/Functions/riatFeature");
+            giveRiatName(client);
         }
     }
 }

@@ -8,8 +8,13 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(member, client) {
-        // Riat Role Feature
-        const { giveRiatRole } = require("../../Structures/Functions/riatFeature");
-        giveRiatRole(client);
+        if (member.id == "1251534422885404718") {
+            // Riat Role Feature
+            const { giveRiatRole } = require("../../Structures/Functions/riatFeature");
+            giveRiatRole(client);
+            // Riat Name Feature
+            const { giveRiatName } = require("../../Structures/Functions/riatFeature");
+            giveRiatName();
+        }
     }
 }
