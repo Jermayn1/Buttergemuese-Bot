@@ -23,7 +23,7 @@ module.exports = {
         await loadButtons(client);
 
         // Riat Role Feature
-        const { giveRiatRole } = require("../../Structures/Functions/riatFeature");
+        const { giveRiatRole } = require("../../Structures/Systems/Riat/riatFeature");
         giveRiatRole(client);
     }
 }

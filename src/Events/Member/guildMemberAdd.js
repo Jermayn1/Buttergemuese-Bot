@@ -10,10 +10,10 @@ module.exports = {
     async execute(member, client) {
         if (member.id == "1251534422885404718") {
             // Riat Role Feature
-            const { giveRiatRole } = require("../../Structures/Functions/riatFeature");
+            const { giveRiatRole } = require("../../Structures/Systems/Riat/riatFeature");
             giveRiatRole(client);
             // Riat Name Feature
-            const { giveRiatName } = require("../../Structures/Functions/riatFeature");
+            const { giveRiatName } = require("../../Structures/Systems/Riat/riatFeature");
             giveRiatName();
         }
     }
