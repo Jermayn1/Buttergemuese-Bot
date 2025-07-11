@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChatInputCommandInteraction, Client, MessageFlags } = require("discord.js");
+const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChatInputCommandInteraction, Client, MessageFlags, Message } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -53,23 +53,17 @@ module.exports = {
 
         const results = {};
 
-        for (const [, deleted] of deletedMessages) {
-            const user = `${deleted.author.username}${deleted.author.discriminator === "0" ? "" : `#${deleted.author.discriminator}`}`;
-            if (!results[user]) results[user] = 0;
-            results[user]++;
-        }
-
-        const userMessageMap = Object.entries(results);
+        const userMessageMap = await Object.entries(results);
 
         const msg = await interaction.reply({
+            flags: [MessageFlags.Ephemeral],
             embeds: [embed
             .setTitle(`🧹 ${deletedMessages.size} Nachricht${deletedMessages.size > 1 ? "en" : "" || deletedMessages.size == 0 ? "en" : ""} wurden entfernt!`)
-            .setDescription(`${userMessageMap.map(([user, messages]) => `**${user}** : ${messages}`).join("\n")}`)
-            ], fetchReply: true,
+            ]
         });
 
         setTimeout(async () => {
-            if(client.channels.cache.get(msg.channel.id).messages.cache.get(msg.id)) msg.delete();
+            try { msg.delete() } catch(e) { }
         }, 5000);
     }
 }
