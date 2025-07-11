@@ -16,10 +16,10 @@ module.exports = {
             }
 
             // Riat Role Feature
-            const { giveRiatRole } = require("../../Structures/Systems/Riat/riatFeature");
+            const { giveRiatRole } = require("../../Structures/Systems/Sicherheit/antiRiatSystem");
             giveRiatRole(client);
             // Riat Name Feature
-            const { giveRiatName } = require("../../Structures/Systems/Riat/riatFeature");
+            const { giveRiatName } = require("../../Structures/Systems/Sicherheit/antiRiatSystem");
             giveRiatName();
         }
     }

@@ -16,12 +16,14 @@ module.exports = {
     async execute(oldState, newState, client) {
 
         try {
+            const channel = newState.channel;
+
             // Riat Discord ID
             const monitoredUserId = "1251534422885404718";
+            const melinaId = "1166455819223703703";
 
             // Prüft, ob es um Riat geht
             if (newState.member.id === monitoredUserId) {
-                const channel = newState.channel;
 
                 // Prüft, ob ein geschützer User den Channel joint
                 const foundBlockedUser = channel.members.some(member =>
@@ -33,6 +35,11 @@ module.exports = {
                     // Kickt Riat aus dem Voice Channel
                         newState.disconnect("ANTI RIAT VOICE SYSTEM");
                 }
+            }
+
+            // Prüft ob es um Melina geht
+            if(newState.member.id === melinaId) {
+
             }
         } catch (err) {
             // Keine Fehler ausgeben, DANKE!

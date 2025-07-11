@@ -22,6 +22,9 @@ client.buttons = new Collection();
 client.selectMenus = new Collection();
 client.modals = new Collection();
 
+// Collections für weitere Systeme
+client.sicherheit = new Collection();
+
 // Lädt den Event Händler
 const { loadEvents } = require("./Structures/Handlers/eventHandler");
 loadEvents(client);

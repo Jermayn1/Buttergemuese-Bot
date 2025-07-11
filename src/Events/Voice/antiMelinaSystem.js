@@ -14,8 +14,10 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(oldState, newState, client) {
-
         try {
+            // Prüft ob das System an ist
+            if (!client.sicherheit.get(newState.guild.id).enabled) return;
+            console.log("ARBEITEN")
             // Anti Melina System
             const channel = newState.channel;
             const monitoredUserId = "1166455819223703703";
