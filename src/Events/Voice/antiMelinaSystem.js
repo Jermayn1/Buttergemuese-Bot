@@ -31,7 +31,9 @@ module.exports = {
                 // Melina ist mit einer schützen Person im Voice
                 if (foundBlockedUser) {
                     // Kickt Melina aus dem Voice Channel
-                        newState.disconnect("ANTI MELINA VOICE SYSTEM");
+                    // DISABLED
+                    return
+                    newState.disconnect("ANTI MELINA VOICE SYSTEM");
                 }
             }
         } catch (err) {
