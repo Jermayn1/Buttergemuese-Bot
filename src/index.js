@@ -24,6 +24,7 @@ client.modals = new Collection();
 
 // Collections für weitere Systeme
 client.sicherheit = new Collection();
+client.automove = new Collection();
 
 // Lädt den Event Händler
 const { loadEvents } = require("./Structures/Handlers/eventHandler");
