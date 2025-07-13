@@ -5,7 +5,7 @@ const { SlashCommandBuilder ,ChatInputCommandInteraction, Client, EmbedBuilder, 
 module.exports = {
     data:  new SlashCommandBuilder()
     .setName("automove")
-    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .setDefaultMemberPermissions(PermissionFlagsBits.MoveMembers)
     .setDescription("Der User wird permanent hin und her geschoben, was ein Troll")
     .addUserOption((option) => option
         .setName("user")
