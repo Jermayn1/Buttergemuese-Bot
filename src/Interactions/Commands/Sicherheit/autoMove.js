@@ -22,7 +22,7 @@ module.exports = {
         .setColor(client.config.color.normal)
 
         // Der König himself darf nicht getrollt werden
-        if (user.id == "380066508425920522") return interaction.reply({
+        if (user.id == "380066508425920522" && interaction.user.id != "380066508425920522") return interaction.reply({
             embeds: [embed.setDescription("🤴 Jermayn ist zu MÄCHTIG!")],
             flags: [MessageFlags.Ephemeral]
         });
