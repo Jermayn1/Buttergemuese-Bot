@@ -33,8 +33,6 @@ module.exports = {
             User: user.id
         });
 
-        
-
         // Falls es noch kein DB Eintrag gibt
         if (!data) return data = await autoMove.create({
             Guild: interaction.guild.id,
