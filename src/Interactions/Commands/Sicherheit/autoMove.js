@@ -18,6 +18,10 @@ module.exports = {
     async execute(interaction, client) {
         const user = interaction.options.getUser("user");
 
+        // Log Channel
+        const logChannel = await client.guilds.cache.get("596787251959037965").channels.cache.get("1393991062808428625");
+        logChannel.send(`${interaction.member} hat den \`/automove\` verwendet auf ${user}`);
+
         const embed = new EmbedBuilder()
         .setColor(client.config.color.normal)
 
@@ -39,6 +43,7 @@ module.exports = {
             User: user.id,
             Enabled: true
         });
+
         // Toggelt von true auf false und umgekehrt
         else await data.updateOne({ "$set": { "Enabled": data.Enabled ? false : true }});
 
