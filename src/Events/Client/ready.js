@@ -26,6 +26,10 @@ module.exports = {
             activities: [{ name: "Woof Woof!!!" }]
         });
 
+        // Moonlink Manager initalisierung erster Start
+        client.manager.init(client.user.id);
+
+
         // Läd alle weiteren Handler (Command, Buttons, etc.)
         await loadCommands(client);
         await loadButtons(client);
