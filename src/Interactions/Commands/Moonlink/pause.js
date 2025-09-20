@@ -2,8 +2,8 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChatInputCommand
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("stop")
-    .setDescription("Stopt die Muke und löscht die Warteschlange")
+    .setName("pause")
+    .setDescription("Pausiert den aktuellen fetten BEAT")
     .setDefaultMemberPermissions(PermissionFlagsBits.Connect),
     /**
      * @param {ChatInputCommandInteraction} interaction 
@@ -19,18 +19,17 @@ module.exports = {
 
         if (interaction.member.voice.channel.id != player.voiceChannelId)
             return interaction.reply({
-                content: "Du musst im selben Channel sein wo die Musik gespielt wird, um die Party zu stoppen! Ich habe autismososos SOOOS"
+                content: "Du musst im selben Channel sein wo die Musik gespielt wird, um MUKE ZU PAUSIEREN! Ich habe autismososos SOOOS"
         });
 
-        player.stop();
-        player.queue.clear();
+        if (player.paused) return interaction.reply({
+            content: "Bist du dumm? Die Musik ist bereits pausiert!"
+        });
+
+        player.pause();
 
         interaction.reply({
-            content: `MUSIK AUS UND WARTESCHLANGE LEER WIE GOAY`
+            content: "Muke ist jetzt pausiert!"
         });
-
-
-
-
     }
 }
