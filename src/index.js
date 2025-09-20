@@ -23,13 +23,10 @@ const manager = new Manager({
         },
     ],
     sendPayload: (guildId, payload) => {
-        const player = client.players.get(guildId); // Player für die Guild holen
-    if (!player) {
-        console.error("Player für Guild nicht gefunden:", guildId);
-        return;
-    }
-    player.sendPayload(payload); // korrekt an Lavalink/Shards senden
-    },
+    const guild = client.guilds.cache.get(guildId);
+    if (guild) guild.shard.send(JSON.parse(payload));
+  },
+  autoPlay: true,
 });
 
 if (!client.players) client.players = new Map();
