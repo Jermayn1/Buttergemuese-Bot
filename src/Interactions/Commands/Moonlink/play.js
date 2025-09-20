@@ -16,11 +16,9 @@ module.exports = {
      * @returns 
      */
     async execute(interaction, client) {
-        interaction.reply({ content: interaction.member.voice });
 
-        return
         // Prüft ob der Member im VoiceChannel ist
-        if (!interaction.member.voice) return interaction.reply({
+        if (!interaction.member.voice.channelId == null) return interaction.reply({
             content: "Du bist nicht in einen Voice Channel!",
             flags: [MessageFlags.Ephemeral]
         });
@@ -37,7 +35,7 @@ module.exports = {
         // This player instance handles everything related to music in a specific guild.
         const player = client.manager.players.create({
             guildId: interaction.guild.id,
-            voiceCHannelId: interaction.member.voice.id,
+            voiceChannelId: interaction.member.voice.channelId,
             textChannelId: interaction.channel.id,
             autoPlay: true,
         });
