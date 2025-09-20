@@ -8,7 +8,6 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(packet, client) {
-        console.log("RAW PACKET!", packet);
         client.manager.packetUpdate(packet);
     }
 }

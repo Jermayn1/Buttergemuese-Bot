@@ -58,16 +58,6 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
-
-
-
-// Provisiorisch die Moonlight Events. Die kommen später an ihren richtigen Ort
-// Forward raw packets for voice updates
-client.on('raw', (packet) => {
-  client.manager.packetUpdate(packet);
-});
-
 // 2️⃣ Event-Handler: Player erstellen, wenn Manager verbunden ist
 manager.on('playerCreate', (player) => {
     client.players.set(player.guild, player); // GuildId -> Player
