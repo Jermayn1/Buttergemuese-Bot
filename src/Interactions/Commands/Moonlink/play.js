@@ -54,7 +54,7 @@ module.exports = {
         // Step 6: Handle the search results.
         // First, check if any tracks were found.
         if (!searchResult.tracks.length) {
-        return message.reply('No results found for your query.');
+        return interaction.reply({ content: 'No results found for your query.'});
         }
 
         // Step 7: Process the results based on the load type.
@@ -64,7 +64,7 @@ module.exports = {
             // If a playlist is found, add all its tracks to the queue.
             player.queue.add(searchResult.tracks);
             
-            message.reply({
+            interaction.reply({
             content: `Added playlist **${searchResult.playlistInfo.name}** with ${searchResult.tracks.length} tracks to the queue.`,
             });
             
@@ -79,7 +79,7 @@ module.exports = {
             // If a single track or a search result is found, add the first track to the queue.
             player.queue.add(searchResult.tracks[0]);
             
-            message.reply({
+            interaction.reply({
             content: `Added **${searchResult.tracks[0].title}** to the queue.`,
             });
             
@@ -91,12 +91,12 @@ module.exports = {
             
         case 'empty':
             // If no matches are found for the query.
-            message.reply('No matches found for your query!');
+            interaction.reply('No matches found for your query!');
             break;
             
         case 'error':
             // If an error occurred while loading the track.
-            message.reply(`An error occurred while loading the track: ${searchResult.error || 'Unknown error'}`);
+            interaction.reply(`An error occurred while loading the track: ${searchResult.error || 'Unknown error'}`);
             break;
         }
     }
