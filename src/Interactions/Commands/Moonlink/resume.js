@@ -26,7 +26,7 @@ module.exports = {
             content: "Bist du dumm? Der Player ist nicht pausiert"
         });
 
-        player.pause();
+        player.resume();
 
         interaction.reply({
             content: "Muke läuft wieder!"
