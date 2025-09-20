@@ -27,7 +27,9 @@ module.exports = {
         });
 
         // Moonlink Manager initalisierung erster Start
-        client.manager.init(client.user.id);
+        client.manager.init(client.user.id)
+        .then(() => console.log("Der Moonlight (Musik) Manager wurde initalisiert!"));
+        
 
 
         // Läd alle weiteren Handler (Command, Buttons, etc.)
