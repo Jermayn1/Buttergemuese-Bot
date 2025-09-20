@@ -2,8 +2,8 @@ const { SlashCommandBuilder, PermissionFlagsBits, EmbedBuilder, ChatInputCommand
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("skip")
-    .setDescription("Weg mit dem aktuellen Track!")
+    .setName("stop")
+    .setDescription("Stopt die Muke und löscht die Warteschlange")
     .setDefaultMemberPermissions(PermissionFlagsBits.Connect),
     /**
      * @param {ChatInputCommandInteraction} interaction 
@@ -19,18 +19,14 @@ module.exports = {
 
         if (interaction.member.voice.channel.id != player.voiceChannelId)
             return interaction.reply({
-                content: "Du musst im selben Channel sein wo die Musik gespielt wird, um ein Track zu skippen! Ich habe autismososos SOOOS"
+                content: "Du musst im selben Channel sein wo die Musik gespielt wird, um die Party zu stoppen! Ich habe autismososos SOOOS"
         });
 
-        if (!player.current) return interaction.reply({
-            content: "Es gibt aktuell nichts zum abspielen!"
-        });
-
-        const currentTrack = player.current;
-        player.skip();
+        player.stop();
+        player.queue.clear();
 
         interaction.reply({
-            content: `Skipped: **${currentTrack.title}** - now Playing (EINFÜGEN BIN ZUU FAUL WIE EIN GAUUUL, BEDENKE BEIM EINFÜGEN! DANACH KANN AUCH NICHTS SEIN!)`
+            content: `MUSIK AUS UND WARTESCHLANGE LEER WIE GOAY`
         })
 
 
