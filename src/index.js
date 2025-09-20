@@ -64,6 +64,10 @@ manager.on('playerCreate', (player) => {
     console.log(`Player für Guild ${player.guild} erstellt.`);
 });
 
+client.on('raw', (packet) => {
+  client.manager.packetUpdate(packet);
+});
+
 // Handle node events
 client.manager.on('nodeConnect', (node) => console.log(`Node ${node.identifier} connected!`));
 client.manager.on('nodeError', (node, error) => console.error(`Node ${node.identifier} error:`, error));
