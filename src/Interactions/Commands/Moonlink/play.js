@@ -47,7 +47,7 @@ module.exports = {
         // Step 5: Search for the requested track.
         // Moonlink.js will search on the default platform (usually YouTube)
         const searchResult = await client.manager.search({
-            query: "spsearch:"+content,
+            query: content,
             requester: interaction.member.id
         });
 
