@@ -28,9 +28,5 @@ module.exports = {
         interaction.reply({
             content: `MUSIK AUS UND WARTESCHLANGE LEER WIE GOAY`
         });
-
-
-
-
     }
 }
