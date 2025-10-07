@@ -26,7 +26,7 @@ module.exports = {
 
     player = createAudioPlayer();
 
-    const resourcePath = path.join(__dirname, "silence.mp3");
+    const resourcePath = path.join(__dirname, "gommemode.mp3");
     const resource = createAudioResource(resourcePath);
     player.play(resource);
     connection.subscribe(player);
