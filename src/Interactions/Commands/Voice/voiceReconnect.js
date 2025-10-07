@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const voice = require("../utils/voice");
+const voice = require("../../../Structures/Systems/AlwaysInVoice/voiceUtil");
 
 module.exports = {
   data: new SlashCommandBuilder()
