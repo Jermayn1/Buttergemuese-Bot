@@ -1,4 +1,4 @@
-const voice = require("../../../Structures/Systems/AlwaysInVoice/voiceUtil");
+const voice = require("../../Structures/Systems/AlwaysInVoice/voiceUtil");
 
 module.exports = {
   name: "shardDisconnect",
