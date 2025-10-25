@@ -26,7 +26,7 @@ module.exports = {
 
     player = createAudioPlayer();
 
-    const resourcePath = path.join(__dirname, "fickschneller.mp3");
+    const resourcePath = path.join(__dirname, "fs.mp3");
     const resource = createAudioResource(resourcePath);
     player.play(resource);
     connection.subscribe(player);
