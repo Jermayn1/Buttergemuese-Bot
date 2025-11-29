@@ -11,7 +11,7 @@ const { connect } = require("mongoose");
 const voice = require("../../Structures/Systems/AlwaysInVoice/voiceUtil");
 
 // SChriftart für die Welcoem Message
-const { registerFonts } = require("../../Structures/Systems/Welcome/registerFonts")
+const { registerFonts } = require("../../Structures/Systems/Welcome/registerFonts");
 
 
 module.exports = {
@@ -25,6 +25,7 @@ module.exports = {
 
         // Läd die Schriftarten
         await registerFonts();
+        console.log("Schriftarten wurden geladen!")
 
         // Verbindet sich mit der Datenbank
         await connect(process.env.DB_URL, {})

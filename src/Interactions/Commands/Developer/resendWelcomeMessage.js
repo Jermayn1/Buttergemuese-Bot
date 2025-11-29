@@ -16,43 +16,21 @@ module.exports = {
 
         await interaction.reply({ content: "Sende Willkommensnachrichten erneut …", ephemeral: true });
 
-        const guild = interaction.guild;
+        await interaction.guild.members.fetch();
 
-        await guild.members.fetch();
+        // Alle Mitglieder der Guild abrufen
+        const members = interaction.guild.members.cache;
 
-        const membersSorted = [...guild.members.cache.values()]
-            .sort((a, b) => a.joinedAt - b.joinedAt)
+        // Mitglieder sortieren nach Join-Datum (älteste zuerst)
+        const sortedMembers = members.sort((a, b) => a.joinedTimestamp - b.joinedTimestamp);
 
-        const total = membersSorted.length;
-        let count = 0;
-
-        for (const member of membersSorted) {
-
+        for (const member of sortedMembers.values()) {
             client.emit("guildMemberAdd", member);
-            count++;
 
-            client.user.setPresence({
-                activities: [
-                    {
-                        name: `${count} / ${total}`,
-                        type: ActivityType.Watching
-                    }
-                ],
-                status: "online"
-            });
-
-            await wait(5000);
+            await wait(15000);
         }
 
         try {
-            client.user.setPresence({
-                activities: [{
-                    name: "Buttergemüse",
-                    type: ActivityType.Watching
-                }],
-                status: "online"
-            });
-
             interaction.editReply({
                 content: `✅ Fertig! Das Event **guildMemberAdd** wurde für **${count} Mitglieder** ausgelöst.`
             })
