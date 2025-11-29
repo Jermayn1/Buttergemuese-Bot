@@ -20,7 +20,7 @@ module.exports = {
 
         await guild.members.fetch();
 
-        const total = members.size;
+        const total = guild.memberCount;
         let count = 0;
 
         for (const member of guild.members.cache.values()) {
