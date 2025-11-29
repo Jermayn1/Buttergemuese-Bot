@@ -26,7 +26,7 @@ module.exports = {
 
         // Setzt den Discord Status
         client.user.setPresence({
-            activities: [{ name: "Woof Woof!!!" }]
+            activities: [{ name: "Buttergemüse" }]
         });
 
         // Moonlink Manager initalisierung erster Start
