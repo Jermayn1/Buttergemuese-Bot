@@ -10,6 +10,9 @@ const { connect } = require("mongoose");
 // 24/7 Voice
 const voice = require("../../Structures/Systems/AlwaysInVoice/voiceUtil");
 
+// SChriftart für die Welcoem Message
+const { registerFonts } = require("../../Structures/Systems/Welcome/registerFonts")
+
 
 module.exports = {
     name: "ready",
@@ -19,6 +22,9 @@ module.exports = {
      */
     async execute(client) {
         console.log(`Client logged in as ${client.user.tag}`);
+
+        // Läd die Schriftarten
+        await registerFonts();
 
         // Verbindet sich mit der Datenbank
         await connect(process.env.DB_URL, {})

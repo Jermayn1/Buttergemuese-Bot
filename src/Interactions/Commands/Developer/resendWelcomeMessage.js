@@ -20,10 +20,13 @@ module.exports = {
 
         await guild.members.fetch();
 
-        const total = guild.memberCount;
+        const membersSorted = [...guild.members.cache.values()]
+            .sort((a, b) => a.joinedAt - b.joinedAt)
+
+        const total = membersSorted.length;
         let count = 0;
 
-        for (const member of guild.members.cache.values()) {
+        for (const member of membersSorted) {
 
             client.emit("guildMemberAdd", member);
             count++;
@@ -38,7 +41,7 @@ module.exports = {
                 status: "online"
             });
 
-            await wait(1500);
+            await wait(5000);
         }
 
         try {
