@@ -3,7 +3,8 @@
     "color": {
         "normal": "#4467C4",
         "valorant": "#ff4654",
-        "error": "#ff5353"
+        "error": "#ff5353",
+        "success": "2ECC71"
     },
 
     "valorant_assets": {

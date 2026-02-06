@@ -13,6 +13,7 @@ const client = new Client({
 });
 
 // Erstellt Moonlink Manager für das Musik System
+/*
 const manager = new Manager({
     nodes: [
         {
@@ -30,9 +31,10 @@ const manager = new Manager({
 });
 
 if (!client.players) client.players = new Map();
+*/
 
 // Fügt den Manager zum Client hinzu, damit man mit diesen leichter arbeiten kann
-client.manager = manager;
+// client.manager = manager;
 
 // Fügt die Config zum client hinzu
 client.config = require("./config.json");
@@ -54,7 +56,7 @@ client.login(process.env.BOT_TOKEN);
 
 
 
-
+/*
 // 2️⃣ Event-Handler: Player erstellen, wenn Manager verbunden ist
 manager.on('playerCreate', (player) => {
     client.players.set(player.guild, player); // GuildId -> Player
@@ -100,3 +102,4 @@ client.on('messageCreate', async (message) => {
     message.reply(`Added to queue: **${result.tracks[0].title}**`);
   }
 });
+*/

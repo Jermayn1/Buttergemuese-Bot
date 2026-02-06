@@ -13,6 +13,9 @@ const voice = require("../../Structures/Systems/AlwaysInVoice/voiceUtil");
 // SChriftart für die Welcoem Message
 const { registerFonts } = require("../../Structures/Systems/Welcome/registerFonts");
 
+// Valorant Match Tracker
+const startTracker = require("../../Structures/Systems/Valorant/matchTracker");
+
 
 module.exports = {
     name: "ready",
@@ -37,15 +40,18 @@ module.exports = {
         });
 
         // Moonlink Manager initalisierung erster Start
-        client.manager.init(client.user.id)
-        .then(() => console.log("Der Moonlight (Musik) Manager wurde initalisiert!"));
+        // client.manager.init(client.user.id)
+        // .then(() => console.log("Der Moonlight (Musik) Manager wurde initalisiert!"));
         
         const guild = client.guilds.cache.get("596787251959037965");
         const channel = guild.channels.cache.get("1316355798561062964");
 
-        if (guild && channel) {
-            await voice.joinAndStay(channel);
-        }
+        // if (guild && channel) {
+        //    await voice.joinAndStay(channel);
+        // }
+
+        // Valorant Match Tracker starten
+        startTracker(client)
 
         // Läd alle weiteren Handler (Command, Buttons, etc.)
         await loadCommands(client);
