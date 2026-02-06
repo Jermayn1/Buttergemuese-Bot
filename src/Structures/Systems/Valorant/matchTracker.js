@@ -34,7 +34,7 @@ module.exports = (client) => {
                 console.log("Tracker Fehler:", err.message);
             }
         }
-    }, 20000) // 30 Sekunden
+    }, 180000) // 30 Sekunden
 
 };
 
