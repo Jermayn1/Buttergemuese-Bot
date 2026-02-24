@@ -20,61 +20,64 @@ module.exports = {
                 .setRequired(true)
         ),
 
-    /**
-     * @param {ChatInputCommandInteraction} interaction 
-     * @param {Client} client 
-     */
     async execute(interaction, client) {
+
+        if (client.videoProcessing) {
+            return interaction.reply({
+                content: "⏳ Es läuft bereits ein Render-Prozess.",
+                ephemeral: true
+            });
+        }
+
+        client.videoProcessing = true;
 
         const topic = interaction.options.getString("thema");
 
-        // Discord wartet sonst nur 3 Sekunden
-        await interaction.deferReply();
+        // ✅ Sofort antworten (keine deferReply!)
+        await interaction.reply({
+            content: `🎬 Dein Video für **${topic}** wird erstellt...\n⏳ Das kann mehrere Minuten dauern.`,
+            ephemeral: false
+        });
 
         try {
 
-            // 1️⃣ API starten
             const response = await fetch("http://127.0.0.1:3000/api/pipeline/run", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ topic })
             });
-
-            if (!response.ok) {
-                return interaction.editReply("❌ API Fehler beim Starten der Pipeline.");
-            }
 
             const data = await response.json();
 
             if (!data.success) {
-                return interaction.editReply("❌ Video konnte nicht erstellt werden.");
+                client.videoProcessing = false;
+                return interaction.channel.send("❌ Fehler bei der Video-Erstellung.");
             }
 
-            const videoPath = data.videoFile; // z.B. /tmp/final_123.mp4
+            const videoPath = data.videoFile;
 
-            // 2️⃣ Prüfen ob Datei existiert
             if (!fs.existsSync(videoPath)) {
-                return interaction.editReply("❌ Video-Datei wurde nicht gefunden.");
+                client.videoProcessing = false;
+                return interaction.channel.send("❌ Video-Datei nicht gefunden.");
             }
 
-            // 3️⃣ Datei direkt hochladen (kein HTTP!)
             const attachment = new AttachmentBuilder(videoPath);
 
-            await interaction.editReply({
-                content: `✅ Video für **${topic}** wurde erstellt!`,
+            // ✅ Normale Nachricht nach Fertigstellung
+            await interaction.channel.send({
+                content: `✅ Video für **${topic}** ist fertig!`,
                 files: [attachment]
             });
 
-            // 4️⃣ Optional: Datei danach löschen (empfohlen bei /tmp)
             setTimeout(() => {
                 fs.unlink(videoPath, () => {});
             }, 15000);
 
-        } catch (error) {
-            console.error(error);
-            await interaction.editReply("❌ Ein unerwarteter Fehler ist aufgetreten.");
+        } catch (err) {
+            console.error(err);
+            await interaction.channel.send("❌ Unerwarteter Fehler beim Rendern.");
         }
+
+        client.videoProcessing = false;
     }
 };
